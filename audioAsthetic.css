@@ -1,0 +1,44 @@
+	body {
+		background: #BFC1C2;
+		font-family: tahoma, verdana, sans serif;
+		margin: auto;
+		width: 50%;
+	}
+
+	canvas {
+		margin-left:10px;
+		margin-top:10px;
+		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
+		background: black;
+	}
+
+	#controls{
+		margin: auto;
+		width: 80%;
+		padding: 2px;
+		border-style: solid;
+		border-width: 1px;
+		background-color: #C6930A;
+  }
+  
+  section{
+  	margin-bottom:.8em;
+  }
+  
+  #playButton{
+  	font-size: 1.2em;
+  	width: 3.5em;
+  }
+  
+	button[data-playing="yes"]:after{
+		content: "Pause";
+	}
+	
+	button[data-playing="no"]:after{
+		content: "Play";
+	}
+	
+	#fsButton{
+  	font-size: 1.2em;
+  	width: 6em;
+  }
