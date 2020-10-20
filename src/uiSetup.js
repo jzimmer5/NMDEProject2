@@ -72,6 +72,14 @@ function setupUI(){
 		else if(document.querySelector('#w').checked){
 			soundType = "wave";
 		}
+    
+        if(document.querySelector('#triangle').checked){
+			soundType = "tri";
+		}
+		else if(document.querySelector('#circle').checked){
+			soundType = "cir";
+		}
+        
 		
 		document.querySelector('#twoSongs').onclick= e =>{
 			if(singleSong){
@@ -91,9 +99,16 @@ function setupUI(){
 				volumeLabel.innerHTML = Math.round((e.target.value/2 * 100));
 			};
 			volumeSlider.dispatchEvent(new InputEvent("input"));
+    
 		let raySlider = document.querySelector('#raySlider');
 		raySlider.oninput=e=>{
 			lightLength = e.target.value/2*400;
+			rayLabel.innerHTML = Math.Round((e.target.value/2 * 100));
+		}
+        
+        let bassSlider = document.querySelector('#bassSlider');
+		bassSlider.oninput=e=>{
+            biquadNode.gain.value = e.target.value;
 			rayLabel.innerHTML = Math.Round((e.target.value/2 * 100));
 		}
 	}
