@@ -65,9 +65,9 @@
 		<button id="playButtonOne" data-playing="no"></button>
 		<label>Track Two: 
 			<select id="trackSelectTwo">
-				<option value="media/Aerodynamic.mp3">Aerodynamic</option>
+				<option value="media/Aerodynamic.mp3" selected>Aerodynamic</option>
 				<option value="media/Crescendolls.mp3">Crescendolls</option>
-				<option value="media/Doin' It Right.mp3" selected>Doin' It Right</option>
+				<option value="media/Doin' It Right.mp3">Doin' It Right</option>
 				<option value="media/Face to Face.mp3">Face to Face</option>
 				<option value="media/Fragments of Time.mp3">Fragments of Time</option>
 				<option value="media/Giorgio by Moroder.mp3">Giorgio by Moroder</option>
@@ -86,7 +86,7 @@
 		<section> Mix Mode:
 			<input type="radio" name="secondSong" id="twoSongs" value="freq">
 			Slide Between Songs: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
-			<span id="volumeLabel">???</span>
+			<span id="volumeLabel"></span>
 		</section>
 		<section>
 		<label>Square color: 
@@ -103,14 +103,14 @@
 		</section>
 		<section> 
 			Light Ray Spread: <input type="range" id="raySlider" min="0" max="2" value="2" step="0.01">
-			<span id="rayLabel">???</span>
+			<span id="rayLabel"></span>
 		</section>
         <section> 
 			Bass Slider: <input type="range" id="bassSlider" min="0" max="10" value="5" step="0.01">
-			<span id="bassLabel">???</span>
+			<span id="bassLabel"></span>
 		</section>
 		<section> Sound Type:
-			<input type="radio" name="waveFreq" id="f" value="freq" checked>Fequency
+			<input type="radio" name="waveFreq" id="f" value="freq" checked>Frequency
 			<input type="radio" name="waveFreq" id="w" value="wave" >Wave Form
 		</section>
 		<section>
