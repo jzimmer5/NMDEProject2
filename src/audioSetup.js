@@ -9,19 +9,22 @@ function setupWebAudio(){
 		audioElement2.src = SOUND_PATH.sound1;
 		
 		sourceNode = audioCtx.createMediaElementSource(audioElement);
-		sourceNode2 = audioCtx2.createMediaElementSource(audioElement2)
+		//sourceNode2 = audioCtx2.createMediaElementSource(audioElement2)
 		analyserNode = audioCtx.createAnalyser();
-		analyserNode2 = audioCtx2.createAnalyser();
+		//analyserNode2 = audioCtx2.createAnalyser();
 		analyserNode.fftSize = NUM_SAMPLES;
-		analyserNode2.fftSize = NUM_SAMPLES;
+		//analyserNode2.fftSize = NUM_SAMPLES;
+        biquadNode = audioCtx.createBiquadFilter();
+        biquadNode.type = "lowshelf";
 		gainNode = audioCtx.createGain();
-		gainNode2 = audioCtx2.createGain();
+		//gainNode2 = audioCtx2.createGain();
 		gainNode.gain.value = 1;
-		gainNode2.gain.value = 1;
+		//gainNode2.gain.value = 1;
 		sourceNode.connect(analyserNode);
-		sourceNode2.connect(analyserNode2);
-		analyserNode.connect(gainNode);
-		analyserNode2.connect(gainNode2);
+		//sourceNode2.connect(analyserNode2);
+		analyserNode.connect(biquadNode);
+		//analyserNode2.connect(gainNode2);
+        biquadNode.connect(gainNode);
 		gainNode.connect(audioCtx.destination);
-		gainNode2.connect(audioCtx2.destination);
+		//gainNode2.connect(audioCtx2.destination);
 	}

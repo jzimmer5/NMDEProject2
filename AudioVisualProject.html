@@ -12,12 +12,13 @@
 	"use strict";
 	window.onload = init;
 	//Global variables
-	let audioElement, audioElement2, canvasElement, playButton1, playButton2, drawCtx, audioCtx, audioCtx2, sourceNode, sourceNode2, analyserNode, analyserNode2, gainNode, gainNode2;
+	let audioElement, audioElement2, canvasElement, playButton1, playButton2, drawCtx, audioCtx, audioCtx2, sourceNode, sourceNode2, analyserNode, analyserNode2, gainNode, gainNode2, biquadNode;
 	let NUM_SAMPLES = 128;
 	let audioData = new Uint8Array(NUM_SAMPLES/2);
 	let audioData2 = new Uint8Array(NUM_SAMPLES/2);
 	let barColor = "yellow";
 	let soundType;
+    let visual;
 	let invert = false, tintRed = false, sepia = false, singleSong = true;
 	let lightLength = 400;
 	
@@ -104,6 +105,10 @@
 			Light Ray Spread: <input type="range" id="raySlider" min="0" max="2" value="2" step="0.01">
 			<span id="rayLabel">???</span>
 		</section>
+        <section> 
+			Bass Slider: <input type="range" id="bassSlider" min="0" max="10" value="5" step="0.01">
+			<span id="bassLabel">???</span>
+		</section>
 		<section> Sound Type:
 			<input type="radio" name="waveFreq" id="f" value="freq" checked>Fequency
 			<input type="radio" name="waveFreq" id="w" value="wave" >Wave Form
@@ -112,6 +117,10 @@
 			Tint Red: <input type="checkbox" id="tintRedCB">
 			Invert: <input type="checkbox" id="invertCB">
 			Sepia: <input type="checkbox" id="sepiaCB">
+		</section>
+        <section> Visuals:
+			<input type="radio" name="Triangle" id="triangle" value="tri" checked>Triangle
+			<input type="radio" name="Circle" id="circle" value="cir" >Circle
 		</section>
 	</div>
 	
