@@ -7,6 +7,7 @@ function setupCanvas() {
 
 //this function creates all the changes on the canvas every 60th of a second
 function update() {
+    canvasElement = document.querySelector('canvas');
     //this calls the function making it happen every 60th of a second
     requestAnimationFrame(update);
     //this if-else changes the sound data to frequency or waveForm
@@ -19,7 +20,7 @@ function update() {
         analyserNode2.getByteTimeDomainData(audioData2);
     }
     //clears the canvas before drawing anything on it again (gives a sense of animation)
-    drawCtx.clearRect(0, 0, 840, 600);
+    drawCtx.clearRect(0, 0, $(window).width(), $(window).height());
 
     if (document.querySelector('#triangle').checked) {
         document.querySelector('#circle').checked = false;
@@ -189,8 +190,22 @@ function lightShow(startX, endX) {
 
     drawCtx.strokeStyle = randomColor();
     drawCtx.beginPath();
-    drawCtx.moveTo(790, 580);
+    drawCtx.moveTo(($('#canvas').width() - 50), 580);
     drawCtx.lineTo(endX, 0);
     drawCtx.closePath();
     drawCtx.stroke();
 }
+
+$(window).on('resize', function(){
+    resizeCanvas();
+});
+
+function resizeCanvas()
+{
+    //canvas.css("width", $(window).width());
+    canvasElement.width = $(window).width();
+    canvasElement.height = $(window).height();
+    //canvas.css("height", $(window).height());
+}
+
+$(document).ready(resizeCanvas());

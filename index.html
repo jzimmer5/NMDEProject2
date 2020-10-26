@@ -4,10 +4,12 @@
 	<meta charset="utf-8" />
 	<title>Audio Visualizer</title>
 	<link rel="stylesheet" href="audioAsthetic.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="src/audioSetup.js"></script>
 	<script src="src/uiSetup.js"></script>
 	<script src="src/visualizer.js"></script>
 	<script src="src/audioLoader.js"></script>
+
 	<script>
 	"use strict";
 	window.onload = init;
@@ -38,14 +40,12 @@
 		sound13: "media/Television Rules The Nation.mp3"
 	}
 
-	var size = {
-		width: document.body.clientWidth,
-		height: document.body.clientHeight
-	}
+	var sizewidth = "600";
+	var sizeheight = "480";
 	</script>
 </head>
 <body>
-	<canvas width="840" height="600"></canvas>
+	<canvas id="canvas" width=sizewidth height=sizeheight></canvas>
 	<div id="controls">
 		<audio id="songOne" controls></audio>
 		<audio id="songTwo" controls></audio>

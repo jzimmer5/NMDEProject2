@@ -2,7 +2,6 @@
 		background: #BFC1C2;
 		font-family: tahoma, verdana, sans serif;
 		margin: auto;
-		width: 50%;
 	}
 
 	canvas {
@@ -38,7 +37,3 @@
 		content: "Play";
 	}
 	
-	#fsButton{
-  	font-size: 1.2em;
-  	width: 6em;
-  }
