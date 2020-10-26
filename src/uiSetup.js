@@ -19,10 +19,6 @@ function setupUI(){
 			barColor = e.target.value;
 		};
 		
-		document.querySelector("#fsButton").onclick = e =>{
-			canvasElement.webkitRequestFullscreen();
-		};
-		
 		playButton1 = document.querySelector("#playButtonOne");
 		playButton1.onclick = e => {
 			if (audioCtx.state == "suspended") {

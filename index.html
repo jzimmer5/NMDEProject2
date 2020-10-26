@@ -37,6 +37,11 @@
 		sound12: "media/Technologic.mp3",
 		sound13: "media/Television Rules The Nation.mp3"
 	}
+
+	var size = {
+		width: document.body.clientWidth,
+		height: document.body.clientHeight
+	}
 	</script>
 </head>
 <body>
@@ -81,7 +86,6 @@
 			</select>
 		</label>
 		<button id="playButtonTwo" data-playing="no"></button>
-		<button id="fsButton">Full Screen</button>
 		</section>
 		<section> Mix Mode:
 			<input type="radio" name="secondSong" id="twoSongs" value="freq">
@@ -118,9 +122,9 @@
 			Invert: <input type="checkbox" id="invertCB">
 			Sepia: <input type="checkbox" id="sepiaCB">
 		</section>
-        <section> Visuals:
-			<input type="radio" name="Triangle" id="triangle" value="tri" checked>Triangle
-			<input type="radio" name="Circle" id="circle" value="cir" >Circle
+        <section > Visuals:
+			<input type="radio" name="Triangle" id="triangle" value="tri" class="visual">Triangle
+			<input type="radio" name="Circle" id="circle" class="visual" value="cir" >Circle
 		</section>
 	</div>
 	
