@@ -19,10 +19,6 @@ function setupUI(){
 			barColor = e.target.value;
 		};
 		
-		document.querySelector("#fsButton").onclick = e =>{
-			canvasElement.webkitRequestFullscreen();
-		};
-		
 		playButton1 = document.querySelector("#playButtonOne");
 		playButton1.onclick = e => {
 			if (audioCtx.state == "suspended") {
@@ -94,9 +90,8 @@ function setupUI(){
 		
 		let volumeSlider = document.querySelector('#volumeSlider');
 			volumeSlider.oninput = e => {
-				gainNode.gain.value = e.target.value;
-				gainNode2.gain.value = 2-e.target.value;
-				volumeLabel.innerHTML = Math.round((e.target.value/2 * 100));
+				gainNode2.gain.value = e.target.value;
+				gainNode.gain.value = 2-e.target.value;
 			};
 			volumeSlider.dispatchEvent(new InputEvent("input"));
     
@@ -108,7 +103,8 @@ function setupUI(){
         
         let bassSlider = document.querySelector('#bassSlider');
 		bassSlider.oninput=e=>{
-            biquadNode.gain.value = e.target.value;
+			biquadNode.gain.value = e.target.value;
+			biquadNode2.gain.value = e.target.value;
 			rayLabel.innerHTML = Math.Round((e.target.value/2 * 100));
 		}
 	}

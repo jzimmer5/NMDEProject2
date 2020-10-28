@@ -2,10 +2,12 @@
 function setupCanvas() {
     canvasElement = document.querySelector('canvas');
     drawCtx = canvasElement.getContext("2d");
+    document.querySelector('#triangle').checked
 }
 
 //this function creates all the changes on the canvas every 60th of a second
 function update() {
+    canvasElement = document.querySelector('canvas');
     //this calls the function making it happen every 60th of a second
     requestAnimationFrame(update);
     //this if-else changes the sound data to frequency or waveForm
@@ -18,9 +20,10 @@ function update() {
         analyserNode2.getByteTimeDomainData(audioData2);
     }
     //clears the canvas before drawing anything on it again (gives a sense of animation)
-    drawCtx.clearRect(0, 0, 840, 600);
+    drawCtx.clearRect(0, 0, $(window).width(), $(window).height());
 
-    if (visual = "tri") {
+    if (document.querySelector('#triangle').checked) {
+        document.querySelector('#circle').checked = false;
         let spacing = 5;
         let barWidth = 8;
         //walks through the data that is sent in from audioData to create the bars inside of the triangle
@@ -115,10 +118,11 @@ function update() {
         manipulatePixels(drawCtx);
     }
 
-    if (visual = "cir") {
-        let maxRadius = canvasHeight / 4;
-        ctx.save();
-        ctx.globalAlpha = 1;
+    if (document.querySelector('#circle').checked) {
+        document.querySelector('#triangle').checked = false;
+        let maxRadius = drawCtx.canvas.height / 4;
+        drawCtx.save();
+        drawCtx.globalAlpha = 1;
 
         let percent = audioData[1] / 255;
 
@@ -126,12 +130,12 @@ function update() {
 
 
 
-        ctx.beginPath();
-        ctx.fillStyle = white;
-        ctx.arc(canvasWidth / 2 - 3, canvasHeight / 2 - 20, circleRadius * 1.8, 0, 2 * Math.PI, false);
-        ctx.fill();
-        ctx.closePath();
-        ctx.restore();
+        drawCtx.beginPath();
+        drawCtx.fillStyle = "white";
+        drawCtx.arc(drawCtx.canvas.width / 2 - 3, drawCtx.canvas.height / 2 - 20, circleRadius * 1.8, 0, 2 * Math.PI, false);
+        drawCtx.fill();
+        drawCtx.closePath();
+        drawCtx.restore();
     }
 }
 
@@ -186,8 +190,22 @@ function lightShow(startX, endX) {
 
     drawCtx.strokeStyle = randomColor();
     drawCtx.beginPath();
-    drawCtx.moveTo(790, 580);
+    drawCtx.moveTo(($('#canvas').width() - 50), 580);
     drawCtx.lineTo(endX, 0);
     drawCtx.closePath();
     drawCtx.stroke();
 }
+
+$(window).on('resize', function(){
+    resizeCanvas();
+});
+
+function resizeCanvas()
+{
+    //canvas.css("width", $(window).width());
+    canvasElement.width = $(window).width();
+    canvasElement.height = $(window).height();
+    //canvas.css("height", $(window).height());
+}
+
+$(document).ready(resizeCanvas());
