@@ -2,11 +2,16 @@
 function setupCanvas() {
     canvasElement = document.querySelector('canvas');
     drawCtx = canvasElement.getContext("2d");
-    document.querySelector('#triangle').checked
+    document.querySelector('#triangle').checked;
+    barColor = `hsl(0, 0%, 0%)`;
 }
 
 //this function creates all the changes on the canvas every 60th of a second
 function update() {
+    
+    barColor = `hsl(${hue}, ${saturation}%, ${light}%)`;
+    console.log(biquadNode.gain.value);
+    
     canvasElement = document.querySelector('canvas');
     //this calls the function making it happen every 60th of a second
     requestAnimationFrame(update);
@@ -133,7 +138,7 @@ function update() {
 
 
         drawCtx.beginPath();
-        drawCtx.fillStyle = "white";
+        drawCtx.fillStyle = barColor;
         drawCtx.arc(drawCtx.canvas.width / 2 - 3, drawCtx.canvas.height / 2 - 20, circleRadius * 1.8, 0, 2 * Math.PI, false);
         drawCtx.fill();
         drawCtx.closePath();
