@@ -3,7 +3,15 @@
 		font-family: tahoma, verdana, sans serif;
 		margin: auto;
 	}
+#container{
+    position: relative;
+}
 
+#menu{
+  left: 0;
+  position: absolute;
+    color: white;
+}
 	canvas {
 		margin-left:10px;
 		margin-top:10px;
