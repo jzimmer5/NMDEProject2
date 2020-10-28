@@ -15,10 +15,6 @@ function setupUI(){
 			}
 		};
 		
-		document.querySelector("#barColorSelect").onchange = e =>{
-			barColor = e.target.value;
-		};
-		
 		playButton1 = document.querySelector("#playButtonOne");
 		playButton1.onclick = e => {
 			if (audioCtx.state == "suspended") {
@@ -101,10 +97,26 @@ function setupUI(){
 			rayLabel.innerHTML = Math.Round((e.target.value/2 * 100));
 		}
         
+        let hueSlider = document.querySelector('#hue');
+		hueSlider.oninput=e=>{
+			hue = e.target.value;
+            console.log(hue);
+		}
+        
+        let saturationSlider = document.querySelector('#saturation');
+		saturationSlider.oninput=e=>{
+			saturation = e.target.value;
+		}
+        
+        let lightSlider = document.querySelector('#light');
+		lightSlider.oninput=e=>{
+			light = e.target.value;
+		}
+        
         let bassSlider = document.querySelector('#bassSlider');
 		bassSlider.oninput=e=>{
 			biquadNode.gain.value = e.target.value;
 			biquadNode2.gain.value = e.target.value;
-			rayLabel.innerHTML = Math.Round((e.target.value/2 * 100));
+			//rayLabel.innerHTML = Math.Round((e.target.value/2 * 100));
 		}
 	}

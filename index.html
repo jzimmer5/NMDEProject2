@@ -19,11 +19,11 @@
         "use strict";
         window.onload = init;
         //Global variables
-        let audioElement, audioElement2, canvasElement, playButton1, playButton2, drawCtx, audioCtx, audioCtx2, sourceNode, sourceNode2, analyserNode, analyserNode2, gainNode, gainNode2, biquadNode;
+        let audioElement, audioElement2, canvasElement, playButton1, playButton2, drawCtx, audioCtx, audioCtx2, sourceNode, sourceNode2, analyserNode, analyserNode2, gainNode, gainNode2, biquadNode, hue, saturation, light;
         let NUM_SAMPLES = 128;
         let audioData = new Uint8Array(NUM_SAMPLES / 2);
         let audioData2 = new Uint8Array(NUM_SAMPLES / 2);
-        let barColor = "yellow";
+        let barColor;
         let soundType;
         let visual;
         let invert = false,
@@ -114,15 +114,9 @@
         </section>
         <section>
             <label>Square color:
-                <select id="barColorSelect">
-                    <option value="yellow" selected>yellow</option>
-                    <option value="blue">blue</option>
-                    <option value="green">green</option>
-                    <option value="orange">orange</option>
-                    <option value="red">red</option>
-                    <option value="purple">purple</option>
-                    <option value="brown">brown</option>
-                </select>
+                <input type="range" id="hue" min="0" max="360" step="1" value="0">
+                <input type="range" id="saturation" min="0" max="100" step="1" value="0">
+                <input type="range" id="light" min="0" max="100" step="1" value="100">
             </label>
         </section>
         <section>
