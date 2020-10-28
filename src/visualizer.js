@@ -24,8 +24,8 @@ function update() {
 
     if (document.querySelector('#triangle').checked) {
         document.querySelector('#circle').checked = false;
-        let spacing = 5;
-        let barWidth = 8;
+        let barWidth = (($('#canvas').width() - 140))/8;
+        let spacing = 10;
         //walks through the data that is sent in from audioData to create the bars inside of the triangle
         for (let i = 0; i < audioData.length; i++) {
             let percent = audioData[i] / 255;
@@ -34,9 +34,9 @@ function update() {
             //when one song is playing the sides are linked
             if (singleSong) {
                 if (i % 2 == 0) {
-                    drawCtx.fillRect(421 + (i * spacing), 500, barWidth, -(440 * percent));
+                    drawCtx.fillRect($('#canvas').width()/2 + (i * spacing), $('#canvas').height() - 50, barWidth, -(440 * percent));
                 } else {
-                    drawCtx.fillRect(419 - (i * spacing), 500, barWidth, -(440 * percent));
+                    drawCtx.fillRect($('#canvas').width()/2 - (i * spacing), $('#canvas').height() - 50, barWidth, -(440 * percent));
                 }
             }
             //when two songs are playing the sides are opposite
@@ -53,66 +53,68 @@ function update() {
         drawCtx.strokeStyle = "white";
         drawCtx.lineWidth = 5;
         drawCtx.beginPath();
-        drawCtx.moveTo(140, 500);
-        drawCtx.lineTo(420, 60);
-        drawCtx.lineTo(700, 500);
+        drawCtx.moveTo(140, $('#canvas').height() - 50);
+        drawCtx.lineTo($('#canvas').width()/2, 60);
+        drawCtx.lineTo($('#canvas').width() - 140, $('#canvas').height() - 50);
         drawCtx.closePath();
         drawCtx.stroke();
 
         //creates the line down the middle
         drawCtx.beginPath();
-        drawCtx.moveTo(420, 60);
-        drawCtx.lineTo(420, 500);
+        drawCtx.moveTo($('#canvas').width()/2, 60);
+        drawCtx.lineTo($('#canvas').width()/2, $('#canvas').height() - 50);
+        drawCtx.closePath();
+        drawCtx.stroke();
+
+        
+
+        //connects the top triangle so that theres a bottom line
+        drawCtx.strokeStyle = "white";
+        drawCtx.beginPath();
+        drawCtx.moveTo(0, 140);
+        drawCtx.lineTo($('#canvas').width(), 140);
+        drawCtx.closePath();
+        drawCtx.stroke();
+
+        //connects the bottom triangle so that theres a top line
+        drawCtx.beginPath();
+        drawCtx.moveTo(0, 250);
+        drawCtx.lineTo($('#canvas').width(), 250);
         drawCtx.closePath();
         drawCtx.stroke();
 
         //creates space in the middle of the triangle
         drawCtx.strokeStyle = "black";
         drawCtx.fillStyle = "black";
-        drawCtx.fillRect(140, 140, 500, 110);
+        drawCtx.fillRect(140, 140, $('#canvas').width(), 110);
 
         //blocks off the right side of the triangle so that the sound bars don't show up outside of it
         drawCtx.save();
-        drawCtx.translate(455, 0);
+        drawCtx.translate(($('#canvas').width()/2), 0);
         drawCtx.rotate(122.5 * Math.PI / 180);
-        drawCtx.fillRect(0, 0, 800, 500);
+        drawCtx.fillRect(0, 0, 1000, 1000);
         drawCtx.restore();
 
         //blocks off the left side of the triangle so that the sound bars don't show up outside of it
         drawCtx.save();
-        drawCtx.translate(385, 0);
+        drawCtx.translate(($('#canvas').width()/2)+ 35, 0);
         drawCtx.rotate(57.5 * Math.PI / 180);
-        drawCtx.fillRect(0, 0, 800, -500);
+        drawCtx.fillRect(0, 0, 1000, -1000);
         drawCtx.restore();
-
-        //connects the top triangle so that theres a bottom line
-        drawCtx.strokeStyle = "white";
-        drawCtx.beginPath();
-        drawCtx.moveTo(367, 140);
-        drawCtx.lineTo(473, 140);
-        drawCtx.closePath();
-        drawCtx.stroke();
-
-        //connects the bottom triangle so that theres a top line
-        drawCtx.beginPath();
-        drawCtx.moveTo(298, 250);
-        drawCtx.lineTo(542, 250);
-        drawCtx.closePath();
-        drawCtx.stroke();
 
         //walks through the data that is sent in from audioData to create the bars inside of the triangle
         for (let i = 0; i < audioData.length; i++) {
             //if one song is playing both crazy light show rays are linked to it
             if (singleSong) {
                 let percent = audioData[i] / 255;
-                lightShow((lightLength * percent), (840 - (lightLength * percent)));
+                lightShow((lightLength * percent), ($('#canvas').width() - (lightLength * percent)));
             }
 
             //if two songs are playing it links each side to the respective song
             else {
                 let percent = audioData[i] / 255;
                 let percent2 = audioData2[i] / 255;
-                lightShow((lightLength * percent), (840 - (lightLength * percent2)));
+                lightShow((lightLength * percent), ($('#canvas').width() - (lightLength * percent2)));
             }
         }
         manipulatePixels(drawCtx);
@@ -183,14 +185,14 @@ function randomColor() {
 function lightShow(startX, endX) {
     drawCtx.strokeStyle = randomColor();
     drawCtx.beginPath();
-    drawCtx.moveTo(50, 580);
+    drawCtx.moveTo(50, ($('#canvas').height() - 20));
     drawCtx.lineTo(startX, 0);
     drawCtx.closePath();
     drawCtx.stroke();
 
     drawCtx.strokeStyle = randomColor();
     drawCtx.beginPath();
-    drawCtx.moveTo(($('#canvas').width() - 50), 580);
+    drawCtx.moveTo(($('#canvas').width() - 50), ($('#canvas').height() - 20));
     drawCtx.lineTo(endX, 0);
     drawCtx.closePath();
     drawCtx.stroke();
@@ -207,5 +209,3 @@ function resizeCanvas()
     canvasElement.height = $(window).height();
     //canvas.css("height", $(window).height());
 }
-
-$(document).ready(resizeCanvas());
