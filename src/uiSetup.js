@@ -74,7 +74,7 @@ function setupUI(){
 		}
 		else if(document.querySelector('#circle').checked){
 			soundType = "cir";
-		}
+        }
         
 		
 		document.querySelector('#twoSongs').onclick= e =>{
