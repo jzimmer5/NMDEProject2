@@ -29,7 +29,7 @@ function update() {
 
     if (document.querySelector('#triangle').checked) {
         document.querySelector('#circle').checked = false;
-        let barWidth = (($('#canvas').width() - 140))/8;
+        let barWidth = 15;
         let spacing = 10;
         //walks through the data that is sent in from audioData to create the bars inside of the triangle
         for (let i = 0; i < audioData.length; i++) {
