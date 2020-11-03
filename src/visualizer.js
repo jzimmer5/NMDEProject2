@@ -92,20 +92,41 @@ function update() {
         drawCtx.strokeStyle = "black";
         drawCtx.fillStyle = "black";
         drawCtx.fillRect(140, 140, $('#canvas').width(), 110);
+        
+        //creating the blockers with lines instead
+        drawCtx.beginPath();
+        drawCtx.moveTo(135, $('#canvas').height() - 50);
+        drawCtx.lineTo(($('#canvas').width()/2)-5, 60);
+        drawCtx.lineTo($('#canvas').width(), 0);
+        drawCtx.lineTo(0, 0);
+        drawCtx.lineTo(0, $('#canvas').height() - 50);
+        drawCtx.closePath();
+        drawCtx.stroke();
+        drawCtx.fill();
+
+        drawCtx.beginPath();
+        drawCtx.moveTo($('#canvas').width() - 135, $('#canvas').height() - 50);
+        drawCtx.lineTo(($('#canvas').width()/2)+5, 60);
+        drawCtx.lineTo($('#canvas').width(), 0);
+        drawCtx.lineTo($('#canvas').width(), 0);
+        drawCtx.lineTo($('#canvas').width(), $('#canvas').height() - 50);
+        drawCtx.closePath();
+        drawCtx.stroke();
+        drawCtx.fill();
 
         //blocks off the right side of the triangle so that the sound bars don't show up outside of it
-        drawCtx.save();
+        /*drawCtx.save();
         drawCtx.translate(($('#canvas').width()/2), 0);
         drawCtx.rotate(122.5 * Math.PI / 180);
         drawCtx.fillRect(0, 0, 1000, 1000);
-        drawCtx.restore();
+        drawCtx.restore();*/
 
         //blocks off the left side of the triangle so that the sound bars don't show up outside of it
-        drawCtx.save();
+        /*drawCtx.save();
         drawCtx.translate(($('#canvas').width()/2)+ 35, 0);
         drawCtx.rotate(57.5 * Math.PI / 180);
         drawCtx.fillRect(0, 0, 1000, -1000);
-        drawCtx.restore();
+        drawCtx.restore();*/
 
         //walks through the data that is sent in from audioData to create the bars inside of the triangle
         for (let i = 0; i < audioData.length; i++) {
