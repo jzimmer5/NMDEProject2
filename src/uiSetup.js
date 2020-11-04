@@ -73,7 +73,7 @@ function setupUI(){
         }
         
 		
-		document.querySelector('#twoSongs').onclick= e =>{
+		/*document.querySelector('#twoSongs').onclick= e =>{
 			if(singleSong){
 				singleSong = false;
 				audioElement2.play();
@@ -82,7 +82,7 @@ function setupUI(){
 			else{
 				singleSong = true;
 			}
-		}
+		}*/
 		
 		let volumeSlider = document.querySelector('#volumeSlider');
 			volumeSlider.oninput = e => {
