@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio Visualizer</title>
     <link rel="stylesheet" href="audioAsthetic.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -12,8 +13,6 @@
     <script src="src/audioLoader.js"></script>
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
     <script>
         "use strict";
@@ -51,6 +50,15 @@
         var sizewidth = "1200";
         var sizeheight = "960";
 
+        function myFunction() {
+            let x = document.querySelector("#controls");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+        }
+
     </script>
 </head>
 
@@ -58,90 +66,126 @@
     <div id="container" width=sizewidth height=sizeheight>
         <canvas id="canvas" width=sizewidth height=sizeheight></canvas>
 
-        <button id="menu" class="mdl-button mdl-js-button mdl-button--icon">
-            <i class="material-icons">menu</i>
-        </button>
-    </div>
-
-    <ul >
-        <li class="mdl-menu__item"><audio id="songOne" controls></audio></li>
-    </ul>
-    <div id="controls" class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="menu">
+    
+        <button onclick="myFunction()" id="hide">Hide Controls</button>
+    <div id="controls">
         <audio id="songOne" controls></audio>
         <audio id="songTwo" controls></audio>
-        <section>
-            <label>Track One:
-                <select id="trackSelectOne">
-                    <option value="media/Aerodynamic.mp3">Aerodynamic</option>
-                    <option value="media/Crescendolls.mp3">Crescendolls</option>
-                    <option value="media/Doin' It Right.mp3" selected>Doin' It Right</option>
-                    <option value="media/Face to Face.mp3">Face to Face</option>
-                    <option value="media/Fragments of Time.mp3">Fragments of Time</option>
-                    <option value="media/Giorgio by Moroder.mp3">Giorgio by Moroder</option>
-                    <option value="media/Harder, Better, Faster, Stronger.mp3">Harder, Better, Faster, Stronger</option>
-                    <option value="media/One More Time.mp3">One More Time</option>
-                    <option value="media/Too Long.mp3">Too Long</option>
-                    <option value="media/Human After All.mp3">Human After All</option>
-                    <option value="media/Robot Rock.mp3">Robot Rock</option>
-                    <option value="media/Technologic.mp3">Technologic</option>
-                    <option value="media/Television Rules The Nation.mp3">Television Rules The Nation</option>
-                </select>
-            </label>
-            <button id="playButtonOne" data-playing="no"></button>
-            <label>Track Two:
-                <select id="trackSelectTwo">
-                    <option value="media/Aerodynamic.mp3" selected>Aerodynamic</option>
-                    <option value="media/Crescendolls.mp3">Crescendolls</option>
-                    <option value="media/Doin' It Right.mp3">Doin' It Right</option>
-                    <option value="media/Face to Face.mp3">Face to Face</option>
-                    <option value="media/Fragments of Time.mp3">Fragments of Time</option>
-                    <option value="media/Giorgio by Moroder.mp3">Giorgio by Moroder</option>
-                    <option value="media/Harder, Better, Faster, Stronger.mp3">Harder, Better, Faster, Stronger</option>
-                    <option value="media/One More Time.mp3">One More Time</option>
-                    <option value="media/Too Long.mp3">Too Long</option>
-                    <option value="media/Human After All.mp3">Human After All</option>
-                    <option value="media/Robot Rock.mp3">Robot Rock</option>
-                    <option value="media/Technologic.mp3">Technologic</option>
-                    <option value="media/Television Rules The Nation.mp3">Television Rules The Nation</option>
-                </select>
-            </label>
-            <button id="playButtonTwo" data-playing="no"></button>
-        </section>
-        <section> Mix Mode:
-            <input type="radio" name="secondSong" id="twoSongs" value="freq">
-            Slide Between Songs: <input type="range" id="volumeSlider" min="0" max="2" value="1" step="0.01">
-            <span id="volumeLabel"></span>
-        </section>
-        <section>
-            <label>Square color:
-                <input type="range" id="hue" min="0" max="360" step="1" value="0">
-                <input type="range" id="saturation" min="0" max="100" step="1" value="0">
-                <input type="range" id="light" min="0" max="100" step="1" value="50">
-            </label>
-        </section>
-        <section>
-            Light Ray Spread: <input type="range" id="raySlider" min="0" max="2" value="2" step="0.01">
-            <span id="rayLabel"></span>
-        </section>
-        <section>
-            Bass Slider: <input type="range" id="bassSlider" min="0" max="10" value="5" step="0.01">
-            <span id="bassLabel"></span>
-        </section>
-        <section> Sound Type:
-            <input type="radio" name="waveFreq" id="f" value="freq" checked>Frequency
-            <input type="radio" name="waveFreq" id="w" value="wave">Wave Form
-        </section>
-        <section>
-            Tint Red: <input type="checkbox" id="tintRedCB">
-            Invert: <input type="checkbox" id="invertCB">
-            Sepia: <input type="checkbox" id="sepiaCB">
-        </section>
-        <section> Visuals:
-            <input type="radio" name="visual" id="triangle" value="tri">Triangle
-            <input type="radio" name="visual" id="circle"  value="cir">Circle
-        </section>
-    </div>
+        <div id="audControls">
+            <h1>AUDIO CONTROLS</h1>
+            <section>
+                <section id="trackOne">
+                    <label>Track One:
+                        <select id="trackSelectOne">
+                            <option value="media/Aerodynamic.mp3">Aerodynamic</option>
+                            <option value="media/Crescendolls.mp3">Crescendolls</option>
+                            <option value="media/Doin' It Right.mp3" selected>Doin' It Right</option>
+                            <option value="media/Face to Face.mp3">Face to Face</option>
+                            <option value="media/Fragments of Time.mp3">Fragments of Time</option>
+                            <option value="media/Giorgio by Moroder.mp3">Giorgio by Moroder</option>
+                            <option value="media/Harder, Better, Faster, Stronger.mp3">Harder, Better, Faster, Stronger</option>
+                            <option value="media/One More Time.mp3">One More Time</option>
+                            <option value="media/Too Long.mp3">Too Long</option>
+                            <option value="media/Human After All.mp3">Human After All</option>
+                            <option value="media/Robot Rock.mp3">Robot Rock</option>
+                            <option value="media/Technologic.mp3">Technologic</option>
+                            <option value="media/Television Rules The Nation.mp3">Television Rules The Nation</option>
+                        </select>
+                    </label>
+                    <button id="playButtonOne" data-playing="no"></button>
+                </section>
+                <section id="trackTwo">
+                    <label>Track Two:
+                        <select id="trackSelectTwo">
+                            <option value="media/Aerodynamic.mp3">Aerodynamic</option>
+                            <option value="media/Crescendolls.mp3">Crescendolls</option>
+                            <option value="media/Doin' It Right.mp3" selected>Doin' It Right</option>
+                            <option value="media/Face to Face.mp3">Face to Face</option>
+                            <option value="media/Fragments of Time.mp3">Fragments of Time</option>
+                            <option value="media/Giorgio by Moroder.mp3">Giorgio by Moroder</option>
+                            <option value="media/Harder, Better, Faster, Stronger.mp3">Harder, Better, Faster, Stronger</option>
+                            <option value="media/One More Time.mp3">One More Time</option>
+                            <option value="media/Too Long.mp3">Too Long</option>
+                            <option value="media/Human After All.mp3">Human After All</option>
+                            <option value="media/Robot Rock.mp3">Robot Rock</option>
+                            <option value="media/Technologic.mp3">Technologic</option>
+                            <option value="media/Television Rules The Nation.mp3">Television Rules The Nation</option>
+                        </select>
+                    </label>
+                    <button id="playButtonTwo" data-playing="no"></button>
+                </section>
+            </section>
+            <section id="mix">
+                <label for="volumeSlider">Mix Mode:</label>
+                <br>
+                <!-- <input type="radio" name="secondSong" id="twoSongs" value="freq"> -->
+                <input type="range" id="volumeSlider" min="0" max="2" value="0" step="0.01">
+                <!-- <span id="volumeLabel"></span> -->
+            </section>
 
+            <section id="bass">
+                <label for="bassSlider">Bass Slider:</label>
+                <br>
+                <input type="range" id="bassSlider" min="0" max="10" value="5" step="0.01">
+            </section>
+        </div>
+        <div id="visControls">
+            <h1>VISUAL CONTROLS</h1>
+            <section id="visType">
+                <label id="visualLabel">Visual:</label>
+                <br>
+                <label id="triLabel">Triangle</label>
+                <input type="radio" name="visual" id="triangle" value="tri">
+
+                <label id="cirLabel">Circle</label>
+                <input type="radio" name="visual" id="circle" value="cir">
+            </section>
+
+            <section id="soundType">
+                <label id="soundLabel">Sound Type:</label>
+                <br>
+                <label id="freqLabel">Frequency</label>
+                <input type="radio" name="waveFreq" id="f" value="freq" checked>
+
+                <label id="waveLabel">Wave Form</label>
+                <input type="radio" name="waveFreq" id="w" value="wave">
+            </section>
+
+            <section id="tint">
+                <label id="tintLabel">Tint:</label>
+                <br>
+                <label id="redLabel">Red</label>
+                <input type="checkbox" id="tintRedCB">
+
+                <label id="invLabel">Invert</label>
+                <input type="checkbox" id="invertCB">
+
+                <label id="sepLabel">Sepia</label>
+                <input type="checkbox" id="sepiaCB">
+            </section>
+
+            <section id="sqColor">
+                <label id="colorLabel">Color:</label>
+                <br>
+                <label for="hue" id="hLabel">H</label>
+                <input type="range" id="hue" min="0" max="360" step="1" value="0">
+                <br>
+                <label for="saturation" id="sLabel">S</label>
+                <input type="range" id="saturation" min="0" max="100" step="1" value="0">
+                <br>
+                <label for="light" id="bLabel">B</label>
+                <input type="range" id="light" min="0" max="100" step="1" value="100">
+            </section>
+
+            <section id="lightSpread">
+                <label for="raySlider">Light Ray Spread:</label>
+                <br>
+                <input type="range" id="raySlider" min="0" max="2" value="2" step="0.01">
+                <!-- <span id="rayLabel"></span> -->
+            </section>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>

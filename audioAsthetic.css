@@ -1,48 +1,226 @@
-	body {
-		background: #BFC1C2;
-		font-family: tahoma, verdana, sans serif;
-		margin: auto;
-	}
-#container{
+#container {
     position: relative;
 }
 
-#menu{
-    top:0;
-  left: 0;
-  position: absolute;
-    color: white;
+#controls {
+    top: 0;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 20vw;
+    height: sizeheight;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    /* try to add blur effect */
 }
-	canvas {
-		margin-left:10px;
-		margin-top:10px;
-		box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
-		background: black;
-	}
+#hide{
+    top: 0;
+    right: sizewidth;
+    position: absolute;
+}
+h1 {
+    font-size: 26px;
+    color: white;
+    font-family: Roboto;
+    /* padding: 10px; */
+    text-align: center;
+}
 
-	#controls{
-		margin: auto;
-		width: 80%;
-		padding: 2px;
-		border-style: solid;
-		border-width: 1px;
-		background-color: #C6930A;
-  }
-  
-  section{
-  	margin-bottom:.8em;
-  }
-  
-  #playButton{
-  	font-size: 1.2em;
-  	width: 3.5em;
-  }
-  
-	button[data-playing="yes"]:after{
-		content: "Pause";
-	}
-	
-	button[data-playing="no"]:after{
-		content: "Play";
-	}
-	
+#canvas {
+    margin-left: 10px;
+    margin-top: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    background: black;
+}
+
+label,
+section {
+    color: white;
+    font-family: Roboto;
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+}
+
+/* Audio Controls */
+
+/* Track Select */
+#trackSelectOne,
+#trackSelectTwo {
+    width: 150px;
+}
+
+#trackOne,
+#trackTwo {
+    padding: 15px;
+}
+
+/* Track Buttons */
+#playButtonOne,
+#playButtonTwo {
+    font-size: 0.8em;
+    width: 3.3em;
+}
+
+/* Mix Section */
+#mix {
+    padding: 15px;
+}
+
+/* Mix sliding styles */
+#volumeSlider {
+    width: 50%;
+    height: 2px;
+    background: lightslategray;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 2px;
+}
+
+#volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+/* Bass Section */
+#bass {
+    padding: 15px;
+}
+
+/* Bass sliding styles */
+#bassSlider {
+    width: 50%;
+    height: 2px;
+    background: lightslategray;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 2px;
+}
+
+#bassSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+
+/* Visual Controls */
+#visControls {
+    padding-top: 15px;
+}
+
+
+/* Visual Type Section */
+#visType {
+    padding: 15px;
+}
+
+#triLabel,
+#cirLabel {
+    color: white;
+    font-family: Roboto;
+    font-size: 12px;
+}
+
+
+/* Sound Type Section */
+#soundType {
+    padding: 15px;
+}
+
+#freqLabel,
+#waveLabel {
+    color: white;
+    font-family: Roboto;
+    font-size: 12px;
+}
+
+
+/* Tint Section */
+#tint {
+    padding: 15px;
+}
+
+#redLabel,
+#invLabel,
+#sepLabel {
+    color: white;
+    font-family: Roboto;
+    font-size: 12px;
+}
+
+
+/* Spacing for color slider and color label  */
+/* As well as general styling */
+#sqColor {
+    padding: 15px;
+}
+
+#hue,
+#saturation,
+#light {
+    width: 50%;
+    height: 2px;
+    background: lightslategray;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 2px;
+    margin: 10px;
+}
+
+#hue::-webkit-slider-thumb,
+#saturation::-webkit-slider-thumb,
+#light::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+#hLabel,
+#sLabel,
+#bLabel {
+    color: white;
+    font-family: Roboto;
+    font-size: 12px;
+}
+
+
+/* Spacing for light slider and light label */
+#lightSpread {
+    padding: 15px;
+}
+
+#raySlider {
+    width: 50%;
+    height: 2px;
+    background: lightslategray;
+    -webkit-appearance: none;
+    outline: none;
+    border-radius: 2px;
+}
+
+#raySlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+button[data-playing="yes"]:after {
+    content: "Pause";
+}
+
+button[data-playing="no"]:after {
+    content: "Play";
+}

@@ -1,6 +1,6 @@
 //this function retrieves the canvas from the HTML and sets it to drawCtx so that I can draw on it
 function setupCanvas() {
-    canvasElement = document.querySelector('canvas');
+    canvasElement = document.querySelector('#canvas');
     drawCtx = canvasElement.getContext("2d");
     document.querySelector('#triangle').checked;
     barColor = `hsl(0, 0%, 0%)`;
